@@ -61,5 +61,15 @@ button:hover { background: #4c9a58; }
 }
 #plant[data-stage="tree"]::after { display: block; }
 #log { list-style-position: inside; padding: 0; }
+#garden {
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: linear-gradient(#1e3a4a, #2f5d50);
+  border-bottom: 24px solid #5a3a22;
+  border-radius: 12px 12px 0 0;
+}
+#log { list-style-position: inside; padding: 0; }
 #plant.wilted { background: olive; transform: rotate(10deg); transform-origin: bottom; }
 #plant.wilted::after { display: none; }
