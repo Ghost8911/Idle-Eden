@@ -2,6 +2,7 @@ const KEY = "idle-eden";
 const THIRSTY_MS = 10000;
 const WILT_MS = 30000;
 const SCALE = 1;
+
 function loadState() {
   const saved = localStorage.getItem(KEY);
   if (saved) return JSON.parse(saved);
@@ -34,9 +35,19 @@ function getStage(age) {
   return "tree";
 }
 
+function logStage() {
+  if (!state.log) state.log = [];
+  const stage = getStage(getAgeSeconds(state));
+  const last = state.log[state.log.length - 1];
+  if (!last || last.stage !== stage) {
+    state.log.push({ stage: stage, at: Date.now() });
+    saveState(state);
+  }
+}
+
 function render() {
   const thirsty = Date.now() - state.lastWatered > THIRSTY_MS;
-    document.getElementById("status").textContent =
+  document.getElementById("status").textContent =
     "Age: " + formatTime(getAgeSeconds(state)) + " | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
   const height = 10 + getAgeSeconds(state) / SCALE;
   document.getElementById("plant").style.height = Math.min(height, 200) + "px";
@@ -44,6 +55,7 @@ function render() {
   document.getElementById("plant").classList.toggle("wilted", Date.now() - state.lastWatered > WILT_MS);
   document.getElementById("plant").style.filter = "hue-rotate(" + state.hue + "deg)";
   document.getElementById("thirst").textContent = "Last watered: " + Math.floor((Date.now() - state.lastWatered) / 1000) + "s ago";
+  logStage();
 }
 
 render();
@@ -54,9 +66,11 @@ document.getElementById("water").addEventListener("click", function () {
   saveState(state);
   render();
 });
+
 document.getElementById("reset").addEventListener("click", function () {
   if (!confirm("Plant a new garden? The old one will be gone.")) return;
   localStorage.removeItem(KEY);
   location.reload();
 });
+
 setInterval(render, 1000);
