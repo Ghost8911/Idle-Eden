@@ -8,3 +8,4 @@
 #plant[data-stage="sprout"] { background: lightgreen; }
 #plant[data-stage="plant"] { background: green; }
 #plant[data-stage="tree"] { background: darkgreen; border-radius: 10px 10px 0 0; }
+#plant.wilted { background: olive; transform: rotate(10deg); transform-origin: bottom; }

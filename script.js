@@ -32,6 +32,7 @@ function render() {
   const height = 10 + getAgeSeconds(state);
   document.getElementById("plant").style.height = Math.min(height, 200) + "px";
   document.getElementById("plant").dataset.stage = getStage(getAgeSeconds(state));
+document.getElementById("plant").classList.toggle("wilted", Date.now() - state.lastWatered > 30000);
 }
 
 render();
