@@ -19,6 +19,8 @@ function render() {
   const thirsty = Date.now() - state.lastWatered > 10000;
   document.getElementById("status").textContent =
     "Age: " + getAgeSeconds(state) + "s | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
+  const height = 10 + getAgeSeconds(state);
+  document.getElementById("plant").style.height = Math.min(height, 200) + "px";
 }
 render();
 document.getElementById("water").addEventListener("click", function () {
@@ -26,5 +28,5 @@ document.getElementById("water").addEventListener("click", function () {
   state.waterCount++;
   saveState(state);
   render();
-});
+  });
 setInterval(render, 1000);
