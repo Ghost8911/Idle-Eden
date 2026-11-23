@@ -4,3 +4,7 @@
   background: green;
   transition: height 0.5s;
 }
+#plant[data-stage="seed"] { background: brown; border-radius: 50%; }
+#plant[data-stage="sprout"] { background: lightgreen; }
+#plant[data-stage="plant"] { background: green; }
+#plant[data-stage="tree"] { background: darkgreen; border-radius: 10px 10px 0 0; }
