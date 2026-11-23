@@ -45,6 +45,16 @@ function logStage() {
   }
 }
 
+function renderLog() {
+  const list = document.getElementById("log");
+  list.innerHTML = "";
+  state.log.forEach(function (entry) {
+    const li = document.createElement("li");
+    li.textContent = entry.stage + " at " + formatTime(Math.floor((entry.at - state.plantedAt) / 1000));
+    list.appendChild(li);
+  });
+}
+
 function render() {
   const thirsty = Date.now() - state.lastWatered > THIRSTY_MS;
   document.getElementById("status").textContent =
@@ -56,6 +66,7 @@ function render() {
   document.getElementById("plant").style.filter = "hue-rotate(" + state.hue + "deg)";
   document.getElementById("thirst").textContent = "Last watered: " + Math.floor((Date.now() - state.lastWatered) / 1000) + "s ago";
   logStage();
+  renderLog();
 }
 
 render();
