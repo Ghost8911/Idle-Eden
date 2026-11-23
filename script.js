@@ -1,6 +1,7 @@
 const KEY = "idle-eden";
 const THIRSTY_MS = 10000;
 const WILT_MS = 30000;
+const SCALE = 1;
 function loadState() {
   const saved = localStorage.getItem(KEY);
   if (saved) return JSON.parse(saved);
@@ -26,6 +27,7 @@ function formatTime(s) {
 }
 
 function getStage(age) {
+  age = age / SCALE;
   if (age < 10) return "seed";
   if (age < 30) return "sprout";
   if (age < 90) return "plant";
@@ -36,7 +38,7 @@ function render() {
   const thirsty = Date.now() - state.lastWatered > THIRSTY_MS;
     document.getElementById("status").textContent =
     "Age: " + formatTime(getAgeSeconds(state)) + " | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
-  const height = 10 + getAgeSeconds(state);
+  const height = 10 + getAgeSeconds(state) / SCALE;
   document.getElementById("plant").style.height = Math.min(height, 200) + "px";
   document.getElementById("plant").dataset.stage = getStage(getAgeSeconds(state));
   document.getElementById("plant").classList.toggle("wilted", Date.now() - state.lastWatered > WILT_MS);
