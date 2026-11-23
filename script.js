@@ -47,5 +47,9 @@ document.getElementById("water").addEventListener("click", function () {
   saveState(state);
   render();
 });
-
+document.getElementById("reset").addEventListener("click", function () {
+  if (!confirm("Plant a new garden? The old one will be gone.")) return;
+  localStorage.removeItem(KEY);
+  location.reload();
+});
 setInterval(render, 1000);
