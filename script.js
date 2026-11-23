@@ -5,6 +5,7 @@ function loadState() {
   if (saved) return JSON.parse(saved);
   return { plantedAt: Date.now(), lastWatered: Date.now(), waterCount: 0 };
 }
+
 function saveState(state) {
   localStorage.setItem(KEY, JSON.stringify(state));
 }
@@ -12,21 +13,34 @@ function saveState(state) {
 const state = loadState();
 saveState(state);
 console.log(state);
+
 function getAgeSeconds(state) {
   return Math.floor((Date.now() - state.plantedAt) / 1000);
 }
+
+function getStage(age) {
+  if (age < 10) return "seed";
+  if (age < 30) return "sprout";
+  if (age < 90) return "plant";
+  return "tree";
+}
+
 function render() {
   const thirsty = Date.now() - state.lastWatered > 10000;
   document.getElementById("status").textContent =
     "Age: " + getAgeSeconds(state) + "s | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
   const height = 10 + getAgeSeconds(state);
   document.getElementById("plant").style.height = Math.min(height, 200) + "px";
+  document.getElementById("plant").dataset.stage = getStage(getAgeSeconds(state));
 }
+
 render();
+
 document.getElementById("water").addEventListener("click", function () {
   state.lastWatered = Date.now();
   state.waterCount++;
   saveState(state);
   render();
-  });
+});
+
 setInterval(render, 1000);
