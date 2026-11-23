@@ -60,5 +60,6 @@ button:hover { background: #4c9a58; }
   display: none;
 }
 #plant[data-stage="tree"]::after { display: block; }
+#log { list-style-position: inside; padding: 0; }
 #plant.wilted { background: olive; transform: rotate(10deg); transform-origin: bottom; }
 #plant.wilted::after { display: none; }
