@@ -15,10 +15,16 @@ console.log(state);
 function getAgeSeconds(state) {
   return Math.floor((Date.now() - state.plantedAt) / 1000);
 }
-
-document.getElementById("status").textContent = "Age: " + getAgeSeconds(state) + "s";
+function render() {
+  const thirsty = Date.now() - state.lastWatered > 10000;
+  document.getElementById("status").textContent =
+    "Age: " + getAgeSeconds(state) + "s | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
+}
+render();
 document.getElementById("water").addEventListener("click", function () {
   state.lastWatered = Date.now();
   state.waterCount++;
   saveState(state);
+  render();
 });
+setInterval(render, 1000);
