@@ -7,7 +7,8 @@ body {
 main { max-width: 400px; margin: 40px auto; }
 #plant { margin: 20px auto 0; }
 #plant {
-  width: 40px;
+  position: relative;
+  width: 12px;
   height: 10px;
   background: green;
   transition: height 0.5s;
@@ -34,4 +35,16 @@ button:hover { background: #4c9a58; }
   50% { transform: translateY(-10px); }
 }
 #plant.bounce { animation: bounce 0.4s; }
+#plant::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 30px;
+  height: 18px;
+  margin-left: -15px;
+  background: inherit;
+  border-radius: 50%;
+}
+#plant[data-stage="seed"]::before { display: none; }
 #plant.wilted { background: olive; transform: rotate(10deg); transform-origin: bottom; }
