@@ -27,3 +27,19 @@ button {
 #plant.wilted {
   filter: grayscale(0.45);
 }
+@keyframes moonGlow {
+  0%, 100% { box-shadow: 0 0 22px #f4f1d0; }
+  50% { box-shadow: 0 0 34px rgba(244, 241, 208, 0.95); }
+}
+
+#garden::before {
+  animation: moonGlow 5s ease-in-out infinite;
+}
+
+#plant {
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.25);
+}
+
+#plant.wilted {
+  box-shadow: none;
+}
