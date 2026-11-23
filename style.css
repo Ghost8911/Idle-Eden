@@ -1,3 +1,11 @@
+body {
+  background: #101a12;
+  color: #e8f0e8;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+main { max-width: 400px; margin: 40px auto; }
+#plant { margin: 20px auto 0; }
 #plant {
   width: 40px;
   height: 10px;
