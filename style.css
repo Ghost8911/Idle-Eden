@@ -29,4 +29,9 @@ button:hover { background: #4c9a58; }
 #plant[data-stage="sprout"] { background: lightgreen; }
 #plant[data-stage="plant"] { background: green; }
 #plant[data-stage="tree"] { background: darkgreen; border-radius: 10px 10px 0 0; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+#plant.bounce { animation: bounce 0.4s; }
 #plant.wilted { background: olive; transform: rotate(10deg); transform-origin: bottom; }

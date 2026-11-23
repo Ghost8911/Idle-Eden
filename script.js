@@ -76,6 +76,9 @@ document.getElementById("water").addEventListener("click", function () {
   state.waterCount++;
   saveState(state);
   render();
+    const plant = document.getElementById("plant");
+  plant.classList.add("bounce");
+  setTimeout(function () { plant.classList.remove("bounce"); }, 400);
 });
 
 document.getElementById("reset").addEventListener("click", function () {
