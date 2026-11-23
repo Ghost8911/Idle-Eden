@@ -12,6 +12,19 @@ main { max-width: 400px; margin: 40px auto; }
   background: green;
   transition: height 0.5s;
 }
+button {
+  background: #3a7d44;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:hover { background: #4c9a58; }
+#reset { background: #7d3a3a; }
+#reset:hover { background: #9a4c4c; }
 #plant[data-stage="seed"] { background: brown; border-radius: 50%; }
 #plant[data-stage="sprout"] { background: lightgreen; }
 #plant[data-stage="plant"] { background: green; }
