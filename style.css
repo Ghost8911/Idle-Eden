@@ -47,4 +47,18 @@ button:hover { background: #4c9a58; }
   border-radius: 50%;
 }
 #plant[data-stage="seed"]::before { display: none; }
+#plant::after {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  background: gold;
+  border-radius: 50%;
+  display: none;
+}
+#plant[data-stage="tree"]::after { display: block; }
 #plant.wilted { background: olive; transform: rotate(10deg); transform-origin: bottom; }
+#plant.wilted::after { display: none; }
