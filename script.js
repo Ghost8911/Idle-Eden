@@ -20,6 +20,11 @@ function getAgeSeconds(state) {
   return Math.floor((Date.now() - state.plantedAt) / 1000);
 }
 
+function formatTime(s) {
+  if (s < 60) return s + "s";
+  return Math.floor(s / 60) + "m " + (s % 60) + "s";
+}
+
 function getStage(age) {
   if (age < 10) return "seed";
   if (age < 30) return "sprout";
@@ -29,8 +34,8 @@ function getStage(age) {
 
 function render() {
   const thirsty = Date.now() - state.lastWatered > THIRSTY_MS;
-  document.getElementById("status").textContent =
-    "Age: " + getAgeSeconds(state) + "s | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
+    document.getElementById("status").textContent =
+    "Age: " + formatTime(getAgeSeconds(state)) + " | Water: " + state.waterCount + (thirsty ? " | thirsty" : "");
   const height = 10 + getAgeSeconds(state);
   document.getElementById("plant").style.height = Math.min(height, 200) + "px";
   document.getElementById("plant").dataset.stage = getStage(getAgeSeconds(state));
