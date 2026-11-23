@@ -34,8 +34,9 @@ function render() {
   const height = 10 + getAgeSeconds(state);
   document.getElementById("plant").style.height = Math.min(height, 200) + "px";
   document.getElementById("plant").dataset.stage = getStage(getAgeSeconds(state));
-    document.getElementById("plant").classList.toggle("wilted", Date.now() - state.lastWatered > WILT_MS);
+  document.getElementById("plant").classList.toggle("wilted", Date.now() - state.lastWatered > WILT_MS);
   document.getElementById("plant").style.filter = "hue-rotate(" + state.hue + "deg)";
+  document.getElementById("thirst").textContent = "Last watered: " + Math.floor((Date.now() - state.lastWatered) / 1000) + "s ago";
 }
 
 render();
