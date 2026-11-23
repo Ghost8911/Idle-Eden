@@ -7,18 +7,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
+  <main>
     <h1>Idle Eden</h1>
-      <div id="garden">
+    <p class="tagline">A garden that keeps growing while you're away.</p>
+
+    <div id="garden">
       <div id="plant"><div id="leaf2"></div></div>
     </div>
+
     <p id="status"></p>
     <p id="thirst"></p>
-    <button id="water">Water</button>
-    <button id="reset">Reset</button>
+
+    <div class="buttons">
+      <button id="water">Water</button>
+      <button id="reset">Reset</button>
+    </div>
+
     <h2>Growth log</h2>
     <ul id="log"></ul>
   </main>
+
   <script src="script.js" defer></script>
 </body>
 </html>
