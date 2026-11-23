@@ -1,1 +1,2 @@
 # Idle-Eden
+Idle Eden is a tiny garden that lives in your browser. You plant a seed, water it when you remember, and it grows on its own as time passes, even while the tab is closed. Forget about it for too long and it starts to wilt. I made it for Hack Club Crescent's "Growth" theme, so I wanted something that really changes with time instead of just playing an animation.
